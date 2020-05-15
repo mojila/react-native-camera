@@ -42,10 +42,15 @@ export default function CameraScreen() {
               flex: 1,
               alignSelf: 'flex-end',
               alignItems: 'center',
-              marginBottom: 32
+              marginBottom: 32,
+              backgroundColor: '#035aa6',
+              paddingTop: 16,
+              paddingBottom: 16,
+              marginLeft: 16,
+              marginRight: 16
             }}
             onPress={takePicture}>
-            <Button title="Scan" />
+            <Text style={{ color: 'white' }}>Press to Scan</Text>
           </TouchableOpacity>
         </View>
       </Camera>
