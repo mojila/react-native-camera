@@ -1,0 +1,17 @@
+{
+  "name": "reactNativeCamera",
+  "displayName": "reactNativeCamera",
+  "expo": {
+    "name": "reactNativeCamera",
+    "slug": "reactNativeCamera",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
