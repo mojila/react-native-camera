@@ -44,14 +44,8 @@ export default function CameraScreen() {
               alignItems: 'center',
               marginBottom: 32
             }}
-            onPress={() => {
-              setType(
-                type === Camera.Constants.Type.back
-                  ? Camera.Constants.Type.front
-                  : Camera.Constants.Type.back
-              );
-            }}>
-            <Button title="Scan" onPress={takePicture} />
+            onPress={takePicture}>
+            <Button title="Scan" />
           </TouchableOpacity>
         </View>
       </Camera>
