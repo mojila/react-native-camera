@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Text, View, TouchableOpacity, Button } from 'react-native';
 import { Camera } from 'expo-camera';
 
 export default function CameraScreen() {
   const [hasPermission, setHasPermission] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
+  const cameraRef = useRef(null)
 
   useEffect(() => {
     (async () => {
@@ -19,9 +20,17 @@ export default function CameraScreen() {
   if (hasPermission === false) {
     return <Text>No access to camera</Text>;
   }
+
+  const takePicture = async () => {
+    if (cameraRef.current) {
+      let photo = await cameraRef.current.takePictureAsync()
+      console.log(photo)
+    }
+  }
+
   return (
     <View style={{ flex: 1 }}>
-      <Camera style={{ flex: 1 }} type={type}>
+      <Camera ref={cameraRef} style={{ flex: 1 }} type={type}>
         <View
           style={{
             flex: 1,
@@ -33,7 +42,7 @@ export default function CameraScreen() {
               flex: 1,
               alignSelf: 'flex-end',
               alignItems: 'center',
-              marginBottom: 32,
+              marginBottom: 32
             }}
             onPress={() => {
               setType(
@@ -42,7 +51,7 @@ export default function CameraScreen() {
                   : Camera.Constants.Type.back
               );
             }}>
-            <Button title="Scan" />
+            <Button title="Scan" onPress={takePicture} />
           </TouchableOpacity>
         </View>
       </Camera>
